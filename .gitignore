@@ -4,4 +4,5 @@ sim/*
 !sim.tcl
 
 tb/tp*
-vivado
+vivado/*
+!.gitkeep
