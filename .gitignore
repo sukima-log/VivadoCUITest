@@ -3,6 +3,6 @@ sim/*
 !sim.sh
 !sim.tcl
 
-tb/tp*
+
 vivado/*
 !.gitkeep
