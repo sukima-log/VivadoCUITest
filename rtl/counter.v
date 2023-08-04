@@ -15,7 +15,7 @@ module counter #(
 );
 
     // ---------------------------
-    // count up
+    // count up down
     // ---------------------------
 
     wire w_upflag = ~(count+1 < P_BASE);
