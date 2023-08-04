@@ -19,6 +19,7 @@ module counter #(
     // ---------------------------
 
     wire w_upflag = ~(count+1 < P_BASE);
+    wire w_dwflag = (count == 'd0);
 
     always @(posedge clk or negedge resetn) begin
         if (!resetn) begin
@@ -28,21 +29,7 @@ module counter #(
                 count   <=  {P_BIT{1'b0}};
             end else if (up_dw) begin
                 count   <=  count + 'd1;
-            end
-        end
-    end
-
-    // ---------------------------
-    // count down
-    // ---------------------------
-
-    wire w_dwflag = (count == 'd0);
-
-    always@(posedge clk or negedge resetn) begin
-        if (!resetn) begin
-            count   <=  {P_BIT{1'b0}};
-        end else if (enable) begin
-            if (!up_dw & w_dwflag) begin
+            end else if (!up_dw & w_dwflag) begin
                 count   <=  (P_BASE - 'd1);
             end else if (!up_dw) begin
                 count   <=  count - 'd1;
